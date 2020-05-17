@@ -3,7 +3,7 @@
 module.exports = function (Customer) {
   Customer.setup = function () {
     const CustomerModel = this;
-    CustomerModel.validatesUniquenessOf('username', {
+    CustomerModel.validatesUniquenessOf('email', {
       message: 'already exists.',
     });
   };
@@ -11,13 +11,11 @@ module.exports = function (Customer) {
 
   Customer.signup = function (ctx, options) {
     const {
-      username, password, confirmPassword,
+      name, password, email,
     } = options;
-    if (password !== confirmPassword) {
-      throw new Error('confirm assword does not match with password.');
-    }
     const customerData = {
-      username,
+      name,
+      email,
       password,
     };
     return Customer.create(customerData);
@@ -38,6 +36,34 @@ module.exports = function (Customer) {
         arg: 'status', type: 'object', root: true,
       },
       http: { verb: 'post' },
+    },
+  );
+
+  Customer.saveAnswer = function (ctx, options) {
+    const data = {
+      questionId: options.questionId,
+      answer: options.answer,
+    };
+    const { userId } = ctx.req.accessToken;
+    data.userId = userId;
+    return QuizLog.upsertWithWhere({ userId: data.userId, questionId: data.questionId }, data);
+  };
+
+  Customer.remoteMethod(
+    'saveAnswer',
+    {
+      description: 'Sign up customer.',
+      accepts: [
+        { arg: 'ctx', type: 'object', http: { source: 'context' } },
+        // eslint-disable-next-line max-len
+        {
+          arg: 'options', type: 'object', required: true, http: { source: 'body' },
+        },
+      ],
+      returns: {
+        arg: 'status', type: 'object', root: true,
+      },
+      http: { url: 'saveAnswer/:questionId', verb: 'post' },
     },
   );
 };

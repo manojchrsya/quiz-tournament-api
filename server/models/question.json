@@ -1,0 +1,55 @@
+{
+  "name": "Question",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "hidden": [
+    "answer"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "question": {
+      "type": "string"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "c": {
+          "type": "string"
+        },
+        "d": {
+          "type": "string"
+        }
+      }
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY",
+      "property": "*"
+    }
+  ],
+  "methods": {}
+}

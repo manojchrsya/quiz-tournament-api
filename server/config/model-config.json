@@ -40,6 +40,14 @@
     "dataSource": "mongodb",
     "public": true
   },
+  "Question": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "QuizLog": {
+    "dataSource": "mongodb",
+    "public": false
+  },
   "FileStorage": {
     "dataSource": "mongodb",
     "public": false

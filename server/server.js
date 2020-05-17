@@ -5,10 +5,9 @@ const boot = require('loopback-boot');
 const env = require('dotenv');
 // eslint-disable-next-line no-multi-assign
 const app = module.exports = loopback();
-
+env.config();
 app.start = function () {
   app.use('/uploads', loopback.static('uploads'));
-  env.config();
   // start the web server
   return app.listen(() => {
     app.emit('started');

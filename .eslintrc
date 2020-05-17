@@ -18,6 +18,8 @@
     "config": true,
     "Customer": true,
     "FileStorage": true,
-    "FileContainer": true
+    "FileContainer": true,
+    "Question": true,
+    "QuizLog": true
   }
 }

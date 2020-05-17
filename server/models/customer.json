@@ -17,12 +17,12 @@
       "type": "string",
       "required": true
     },
-    "username": {
-      "type": "string",
-      "required": true
+    "name": {
+      "type": "string"
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "password": {
       "type": "string",

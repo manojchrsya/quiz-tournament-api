@@ -5,6 +5,7 @@ module.exports = {
     root: path.resolve(__dirname, '../../'),
   },
   mongodb: {
-    host: process.env.MONGO_HOST,
+    url: process.env.MONGO_URL,
+    lazyConnect: false,
   },
 };
