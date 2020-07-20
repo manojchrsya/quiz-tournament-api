@@ -21,7 +21,7 @@
     "fs-extra": "^8.1.0",
     "helmet": "^3.22.0",
     "isemail": "^3.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
